@@ -37,7 +37,7 @@ export const getStatisticsShisha = async (): Promise<StatisticsShisha[]> => {
       throw error;
     }
 
-    return (data as StatisticsShisha) || [];
+    return (data as StatisticsShisha[]) || [];
   } catch (error) {
     console.error('Error fetching statistics shisha:', error);
     return [];
