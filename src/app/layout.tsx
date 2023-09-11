@@ -2,7 +2,8 @@ import './globals.css';
 import Link from 'next/link';
 import LogoutButton from '@ui/LogoutButton';
 import NextJsLogo from '@ui/NextJsLogo';
-import { getUser } from '../lib/database';
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { cookies } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 
@@ -16,8 +17,10 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getUser();
-
+  const supabase = createServerComponentClient({ cookies });
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
   return (
     <html lang="en">
       <body className="min-h-screen w-screen overflow-x-hidden bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 flex flex-col items-center select-none">
@@ -26,7 +29,6 @@ export default async function RootLayout({
             <Link href="/" className="font-semibold text-lg font-serif italic">
               OnlyChill
             </Link>
-            <NextJsLogo />
             {user ? (
               <div className="flex items-center gap-4">
                 Hey, {user?.email}!

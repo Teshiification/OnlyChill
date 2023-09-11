@@ -6,7 +6,7 @@ export default function Login() {
     <div className="relative w-full h-full flex-1 flex flex-col px-8 justify-center content-center items-center gap-2">
       <Link
         href="/"
-        className="absolute left-8 top-8 py-2 px-4 rounded-md no-underline text-foreground bg-tremor-brand hover:bg-tremor-brand-subtle flex items-center group text-sm"
+        className="py-2 px-4 rounded-md no-underline text-foreground flex items-center group text-sm"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
