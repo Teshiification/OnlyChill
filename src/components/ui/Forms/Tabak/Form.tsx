@@ -1,38 +1,27 @@
 'use client';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-import { User } from 'next-auth';
-import { useEffect, useState } from 'react';
+import {
+  Session,
+  createClientComponentClient
+} from '@supabase/auth-helpers-nextjs';
+import { useState } from 'react';
 
-const Form = () => {
-  const supabase = createClientComponentClient({
-    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  });
-
-  const [user, setUser] = useState<User | undefined | null>();
+const TabakForm = ({ session }: { session: Session | null }) => {
   const [name, setName] = useState('');
-
-  useEffect(() => {
-    async function fetchUserData() {
-      const user = (await supabase.auth.getUser()).data.user;
-      if (user) {
-        setUser(user as User);
-      } else {
-        console.error('Error fetching user data');
-      }
-    }
-    fetchUserData();
-  }, [supabase, setUser]);
+  const [submitPending, setSubmitPending] = useState<boolean>(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const user = session?.user;
 
     if (!user) {
       console.error('User is not authenticated.');
       return;
     }
-
+    console.log(name, e);
     try {
+      setSubmitPending(true);
+      const supabase = createClientComponentClient();
       const { data, error } = await supabase
         .from('statistics_shisha')
         .insert({ name: name, user: user.id })
@@ -40,7 +29,7 @@ const Form = () => {
         .single();
 
       if (error || !data) {
-        alert('Error while adding data to the database');
+        alert('Error while adding data to the database:' + error?.message);
       } else {
         console.log('Data inserted successfully:', data);
         alert('Successfully added');
@@ -49,11 +38,14 @@ const Form = () => {
     } catch (error) {
       console.error('Error inserting data:', error);
     }
+    setSubmitPending(false);
   };
+
   return (
     <form
       onSubmit={handleSubmit}
       className="self-center w-full md:w-1/2 gap-4 flex flex-col"
+      aria-disabled={submitPending}
     >
       <div className="flex justify-around">
         <label className="flex gap-4">
@@ -77,4 +69,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default TabakForm;

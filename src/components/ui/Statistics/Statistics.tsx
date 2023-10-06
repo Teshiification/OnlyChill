@@ -12,6 +12,10 @@ const Statistics = async () => {
     .from('statistics_shisha')
     .select('*')
     .eq('user', user?.id);
+  const { data: beerdata } = await supabase
+    .from('statistics_beer')
+    .select('*')
+    .eq('user', user?.id);
 
   return (
     <div className="flex flex-col">
@@ -23,6 +27,9 @@ const Statistics = async () => {
           link={'shisha'}
         />
       </div>
+      <div className="flex flex-row md:flex-col gap-4 border-2 border-slate-500 p-2 rounded-md">
+        <Item name={'Beer'} amount={beerdata?.length || 0} link={'beer'} />
+      </div>
     </div>
   );
 };
@@ -33,7 +40,7 @@ export interface ItemProps {
   link?: string;
   img?: string;
 }
-export const Item = (props: ItemProps) => {
+export const Item = async (props: ItemProps) => {
   const { name, amount, img, link } = props;
   return (
     <Link
