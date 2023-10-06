@@ -19,16 +19,22 @@ const Statistics = async () => {
 
   return (
     <div className="flex flex-col">
-      <h1 className="font-semibold text-xl mx-auto py-4">Statistics</h1>
-      <div className="flex flex-row md:flex-col gap-4 border-2 border-slate-500 p-2 rounded-md">
+      <h1 className="font-semibold text-xl mx-auto py-4">
+        Personal Statistics
+      </h1>
+      <div className="flex flex-col md:flex-row gap-4 border-2 border-slate-500 p-2 rounded-md">
         <Item
           name={'Shisha'}
           amount={shishadata?.length || 0}
           link={'shisha'}
         />
-      </div>
-      <div className="flex flex-row md:flex-col gap-4 border-2 border-slate-500 p-2 rounded-md">
         <Item name={'Beer'} amount={beerdata?.length || 0} link={'beer'} />
+      </div>
+      <h1 className="font-semibold text-xl mx-auto py-4">
+        Organisation Statistics
+      </h1>
+      <div className="flex flex-row md:flex-col items-stretch md:items-center gap-4 border-2 border-slate-500 p-2 rounded-md">
+        <p className="italic self-center">coming soon</p>
       </div>
     </div>
   );
@@ -52,7 +58,7 @@ export const Item = async (props: ItemProps) => {
         <p className="font-semibold italic">{amount}x</p>
       </div>
       <img
-        className="absolute w-full h-full opacity-20 object-cover group-hover:scale-105 trasform ease-in-out duration-300"
+        className="blur-sm absolute w-full h-full opacity-20 object-cover group-hover:scale-105 trasform ease-in-out duration-300"
         src={
           img ||
           'https://media.istockphoto.com/id/1284193221/de/foto/einzelhandelslager-voller-regale-mit-waren-in-kartons-arbeiter-scannen-und-sortieren-pakete.jpg?s=1024x1024&w=is&k=20&c=-XBEZxHPQmF-Lvt9q8c8j9xuEldquirL9y6P7OLn4ms='
