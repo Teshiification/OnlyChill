@@ -13,9 +13,10 @@ const ShishaPage = async () => {
   } = await supabase.auth.getUser();
 
   const { data: shishadata } = await supabase
-    .from('statistics_shisha')
+    .from('activity_statistics')
     .select('*')
-    .eq('user', user?.id);
+    .eq('user_id', user?.id)
+    .eq('activity_type', 'smoking shisha');
 
   if (!user) redirect('login');
 

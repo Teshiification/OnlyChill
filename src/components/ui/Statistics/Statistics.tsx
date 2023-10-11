@@ -9,13 +9,15 @@ const Statistics = async () => {
     data: { user }
   } = await supabase.auth.getUser();
   const { data: shishadata } = await supabase
-    .from('statistics_shisha')
+    .from('activity_statistics')
     .select('*')
-    .eq('user', user?.id);
+    .eq('user_id', user?.id)
+    .eq('activity_type', 'smoking shisha');
   const { data: beerdata } = await supabase
-    .from('statistics_beer')
+    .from('activity_statistics')
     .select('*')
-    .eq('user', user?.id);
+    .eq('user_id', user?.id)
+    .eq('activity_type', 'drinking beer');
 
   return (
     <div className="flex flex-col">

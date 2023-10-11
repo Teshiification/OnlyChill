@@ -23,8 +23,12 @@ const TabakForm = ({ session }: { session: Session | null }) => {
       setSubmitPending(true);
       const supabase = createClientComponentClient();
       const { data, error } = await supabase
-        .from('statistics_shisha')
-        .insert({ name: name, user: user.id })
+        .from('activity_statistics')
+        .insert({
+          activity_type: 'smoking shisha',
+          product_name: name,
+          user_id: user.id
+        })
         .select()
         .single();
 

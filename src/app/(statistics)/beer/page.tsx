@@ -13,9 +13,10 @@ const BeerPage = async () => {
   } = await supabase.auth.getUser();
 
   const { data: beerdata } = await supabase
-    .from('statistics_beer')
+    .from('activity_statistics')
     .select('*')
-    .eq('user', user?.id);
+    .eq('user_id', user?.id)
+    .eq('activity_type', 'drinking beer');
 
   if (!user) redirect('login');
 

@@ -21,8 +21,12 @@ const BeerForm = ({ session }: { session: Session | null }) => {
       setSubmitPending(true);
       const supabase = createClientComponentClient();
       const { data, error } = await supabase
-        .from('statistics_beer')
-        .insert({ user: user.id })
+        .from('activity_statistics')
+        .insert({
+          user_id: user.id,
+          activity_type: 'smoking shisha',
+          product_name: 'normal beer'
+        })
         .select()
         .single();
 
