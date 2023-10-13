@@ -121,8 +121,4 @@ We welcome contributions to the Halle App. If you have suggestions for improving
 
 The Halle App was developed by Teshiification. For questions or inquiries, you can reach me at email address.
 
-
-</br>
-
-#### We hope you find the Halle App useful and that it helps you in finding and booking qualified handymen. Enjoy using the app!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
