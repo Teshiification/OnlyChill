@@ -1,48 +1,128 @@
-# Supabase Starter
 
-This starter configures Supabase Auth to use cookies, making the user's session available throughout the entire Next.js app - Client Components, Server Components, Route Handlers, Server Actions and Middleware.
+<!-- BACk TO TOP LINk -->
+<a name="readme-top"></a>
 
-## Deploy your own
+<center>
 
-The Vercel deployment will guide you through creating a Supabase account and project. After installation of the Supabase integration, all relevant environment variables will be set up so that the project is usable immediately after deployment 🚀
+<!-- PROJECT SHIELDS -->
+![Static Badge](https://img.shields.io/badge/MIT-green?label=LICENSE&link=https%3A%2F%2Fgithub.com%2FTeshiification%2FHalle%2Fblob%2Fmain%2FLICENSE)
+![GitHub forks](https://img.shields.io/github/forks/Teshiification/Halle)
+![GitHub Repo stars](https://img.shields.io/github/stars/Teshiification/Halle)
+![GitHub watchers](https://img.shields.io/github/watchers/Teshiification/Halle)
+![GitHub issues](https://img.shields.io/github/issues/Teshiification/Halle)
+![GitHub contributors](https://img.shields.io/github/contributors/Teshiification/Halle)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-supabase&project-name=nextjs-with-supabase&repository-name=nextjs-with-supabase&integration-ids=oac_jUduyjQgOyzev1fjrW83NYOv)
+</center>
 
-## How to use
+<!-- PROJECT LOGO -->
 
-1. Create a [new Supabase project](https://database.new)
-1. Run `npx create-next-app -e with-supabase` to create a Next.js app using the Supabase Starter template
-1. Use `cd` to change into the app's directory
-1. Run `npm install` to install dependencies
-1. Rename `.env.local.example` to `.env.local` and update the values for `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` from [your Supabase project's API settings](https://app.supabase.com/project/_/settings/api)
-1. Run `npm run dev` to start the local development server
 
-> Check out [the docs for Local Development](https://supabase.com/docs/guides/getting-started/local-development) to also run Supabase locally.
 
-### Create a Supabase client
+# OnlyChill
+(The Halle project)
+<!-- TABLE OF CONTENTS -->
+<details>
 
-Check out the [`/app/_examples`](./app/_examples/) folder for an example of creating a Supabase client in:
+<summary>Table of Contents</summary>
 
-- [Client Components](./app/_examples/client-component/page.tsx)
-- [Server Components](./app/_examples/server-component/page.tsx)
-- [Route Handlers](./app/_examples/route-handler/route.ts)
-- [Server Actions](./app/_examples/server-action/page.tsx)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Contribution](#contribution)
+- [License](#license)
+- [Authors](#authors)
 
-### Create `todo` table and seed with data (optional)
+</details>
 
-Navigate to [your project's SQL Editor](https://app.supabase.com/project/_/sql), click `New query`, paste the contents of the [init.sql](./supabase/migrations/20230618024722_init.sql) file and click `RUN`.
+</br>
 
-This will create a basic `todos` table, enable Row Level Security (RLS), and write RLS policies enabling `select` and `insert` actions for `authenticated` users.
+<!-- ABOUT THE PROJECT -->
+## About The Project 
 
-To seed your `todos` table with some dummy data, run the contents of the [seed.sql](./supabase/seed.sql) file.
+Write down your data, e.g. how many cases of beer you bought, how many you drank, to create long-term statistics. View monthly and yearly overviews.
 
-## Feedback and issues
+[Go to OnlyChill.org](https://onlychill.org)
 
-Please file feedback and issues over on the [Supabase GitHub org](https://github.com/supabase/supabase/issues/new/choose).
+</br>
 
-## More Supabase examples
+<!-- Features -->
+## Features
 
-- [Next.js Subscription Payments Starter](https://github.com/vercel/nextjs-subscription-payments)
-- [Cookie-based Auth and the Next.js 13 App Router (free course)](https://youtube.com/playlist?list=PL5S4mPUpp4OtMhpnp93EFSo42iQ40XjbF)
-- [Supabase Auth and the Next.js App Router](https://github.com/supabase/supabase/tree/master/examples/auth/nextjs)
-- [Next.js Auth Helpers Docs](https://supabase.com/docs/guides/auth/auth-helpers/nextjs)
+### User Registration and Authentication
+>Users can register with their email and create a profile to access the app.
+
+### Users and Organizations
+>Create an organisation to view all your statistics collected as a group.
+
+### Payment Integration
+>The app provides an integrated payment solution to allow users to conveniently and securely pay for theyr organization. Users can process payments directly through the app. (WIP)
+
+</br>
+
+<!-- Technologies -->
+## Technologies
+
+The Halle App is based on modern web technologies and utilizes the following technology stack.
+
+### Frontend 
+
+<a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-gray?logo=react&logoColor=%2361DAFB&labelColor=white&color=%2361DAFB"/> </a>
+<a href="https://tailwindcss.com/" target="_blank" ><img src="https://img.shields.io/badge/TawilwindCSS-gray?logo=tailwindcss&logoColor=%2306B6D4&labelColor=white&color=%2306B6D4"/></a>
+
+### Backend
+<a href="https://supabase.com/" target="_blank" ><img src="https://img.shields.io/badge/Supabase-gray?logo=supabase&logoColor=%233FCF8E&labelColor=white&color=%233FCF8E"/> </a>
+
+#### Database
+<a href="https://supabase.com/docs/guides/database/overview" target="_blank" ><img src="https://img.shields.io/badge/Postgresql (via Supabase)-gray?logo=postgresql&logoColor=%234169E1&labelColor=white&color=%234169E1"/></a>
+
+#### Authentication
+<a href="https://supabase.com/docs/guides/auth" target="_blank" ><img src="https://img.shields.io/badge/Supabase_Authentication-gray?logo=supabase&logoColor=%233FCF8E&labelColor=white&color=%233FCF8E"/></a>
+
+</br>
+
+<!-- Setup -->
+##  Setup
+
+Follow these steps to set up the Halle App repository on your local system
+
+### Tasklist
+1. Clone the repository: 
+    > *git clone https://github.com/Teshiification/Halle.git*
+2. Navigate to the project directory: 
+    > *cd Halle*
+3. Install the dependencies: 
+    > *npm i*
+4. Configure the environment variables: 
+    > Create a .env file based on the .env.example template and fill in the required information.
+5. Start the development server: 
+    > *npm start*
+
+:warning: __Please note that you will need a functioning Supabase instance.__
+
+</br>
+
+<!-- Contribution -->
+##  Contribution
+
+We welcome contributions to the Halle App. If you have suggestions for improving the app, please open an issue in this repository. If you would like to make changes, please submit a pull request and provide a detailed description of the proposed changes.
+
+</br>
+
+<!-- License -->
+
+##  License 
+
+ ![Static Badge](https://img.shields.io/badge/MIT-green?label=LICENSE&link=https%3A%2F%2Fgithub.com%2FTeshiification%2FHalle%2Fblob%2Fmain%2FLICENSE)
+ 
+</br>
+
+<!-- Authors -->
+## Authors
+
+The Halle App was developed by Teshiification. For questions or inquiries, you can reach me at email address.
+
+
+</br>
+
+#### We hope you find the Halle App useful and that it helps you in finding and booking qualified handymen. Enjoy using the app!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
