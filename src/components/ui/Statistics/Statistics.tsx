@@ -19,6 +19,19 @@ const Statistics = async () => {
     .eq('user_id', user?.id)
     .eq('activity_type', 'drinking beer');
 
+  const { data: organizations, error } = await supabase
+    .from('user_organization')
+    .select(
+      `
+      *,
+        organization (
+          id,
+          name
+        )
+      `
+    )
+    .eq('user_id', user?.id);
+
   return (
     <div className="flex flex-col">
       <h1 className="font-semibold text-xl mx-auto py-4">
@@ -33,10 +46,22 @@ const Statistics = async () => {
         <Item name={'Beer'} amount={beerdata?.length || 0} link={'beer'} />
       </div>
       <h1 className="font-semibold text-xl mx-auto py-4">
-        Organisation Statistics
+        Organization Statistics
       </h1>
-      <div className="flex flex-row md:flex-col items-stretch md:items-center gap-4 border-2 border-slate-500 p-2 rounded-md">
-        <p className="italic self-center">coming soon</p>
+      <div className="flex flex-col md:flex-row gap-4 border-2 border-slate-500 p-2 rounded-md">
+        {organizations ? (
+          organizations?.map((item) => {
+            console.log(item);
+            return (
+              <Item
+                name={item?.organization.name}
+                link={'organization/' + item?.organization_id}
+              />
+            );
+          })
+        ) : (
+          <p>... no organizations</p>
+        )}
       </div>
     </div>
   );
@@ -44,7 +69,7 @@ const Statistics = async () => {
 
 export interface ItemProps {
   name: string;
-  amount: number;
+  amount?: number;
   link?: string;
   img?: string;
 }
@@ -57,7 +82,7 @@ export const Item = async (props: ItemProps) => {
     >
       <div className="flex flex-col p-2 my-auto mx-auto items-center">
         <p className="font-semibold text-xl">{name}</p>
-        <p className="font-semibold italic">{amount}x</p>
+        {amount && <p className="font-semibold italic">{amount}x</p>}
       </div>
       <img
         className="blur-sm absolute w-full h-full opacity-20 object-cover group-hover:scale-105 trasform ease-in-out duration-300"
