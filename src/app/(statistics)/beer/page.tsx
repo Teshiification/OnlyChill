@@ -1,5 +1,6 @@
 import BeerForm from '@/components/ui/Forms/Beer/Form';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { Session } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
@@ -29,7 +30,7 @@ const BeerPage = async () => {
       <p>Beer</p>
       {
         //<Form />
-        <BeerForm session={session} />
+        session && <BeerForm session={session as Session} />
       }
       <div className="w-full h-full flex flex-col px-2">
         <h2 className="text-xl font-semibold font-serif mx-auto">Log</h2>
@@ -42,6 +43,7 @@ const BeerPage = async () => {
           const date = new Date(data.created_at);
           return (
             <div className="flex justify-between">
+              <p className="w-1/2 overflow-hidden">{data.product_name}</p>
               <p className="border-l-2 border-tremor-brand-subtle pl-2 w-full italic">
                 {`${date.toLocaleDateString()}\t${date.toLocaleTimeString()}`}
               </p>

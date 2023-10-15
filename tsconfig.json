@@ -23,6 +23,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@ui/*": ["./src/components/ui/*"],
+      "@widgets/*": ["./src/components/widgets/*"],
+      "@core/*": ["./src/components/ui/core/*"],
       "@lib/*": ["./src/lib/*"],
     }
   },

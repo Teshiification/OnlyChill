@@ -23,7 +23,7 @@ export default async function RootLayout({
   } = await supabase.auth.getUser();
   return (
     <html lang="en">
-      <body className="min-h-screen w-screen overflow-x-hidden bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 flex flex-col items-center select-none">
+      <body className="h-screen w-screen overflow-hidden bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 flex flex-col items-center select-none">
         <nav className="w-full flex justify-center border-b border-gray-800 h-16">
           <div className="w-full flex justify-between items-center p-3 text-sm">
             <Link href="/" className="font-semibold text-lg font-serif italic">
