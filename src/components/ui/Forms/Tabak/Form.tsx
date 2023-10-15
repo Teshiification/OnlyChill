@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 import Dropdown from '../../core/Dropdown/Dropdown';
 import Form, { SupabaseActivityStatistics } from '../Forms';
 
-export interface BeerFormProps {
+export interface TabakFormProps {
   session: Session;
 }
 
-const TabakForm = ({ session }: BeerFormProps) => {
+const TabakForm = ({ session }: TabakFormProps) => {
   const tabakType: string[] = [
     'peach',
     'dragonfruit',

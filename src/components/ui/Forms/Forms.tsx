@@ -3,8 +3,7 @@ import {
   Session,
   createClientComponentClient
 } from '@supabase/auth-helpers-nextjs';
-import { ReactNode, useEffect, useState } from 'react';
-import Dropdown from '@core/Dropdown/Dropdown';
+import { ReactNode, useState } from 'react';
 
 export type SupabaseActivityStatistics = {
   activity_type: string;
