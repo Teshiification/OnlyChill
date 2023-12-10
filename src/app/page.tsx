@@ -1,6 +1,7 @@
 import Statistics from '@/components/ui/Statistics/Statistics';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,14 +43,6 @@ export default async function Index() {
                   </td>
                 </tr>
               </table>
-            </div>
-
-            <div className="absolute bottom-4 font-semibold flex flex-row justify-around w-full border-2 border-tremor-brand-subtle rounded-md">
-              <p>More is coming soon!</p>
-              <p className="flex gap-1">
-                <p className="text-tremor-brand-subtle">{'<Await>'}</p> is
-                <p className="text-tremor-brand-subtle">{'<Promised>'}</p> !
-              </p>
             </div>
           </div>
         )}

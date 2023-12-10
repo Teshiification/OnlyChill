@@ -45,6 +45,14 @@ export default async function RootLayout({
           </div>
         </nav>
         <main className="w-full h-full">{children}</main>
+        <div className="absolute bottom-4 font-semibold flex flex-row justify-around w-full border-2 border-tremor-brand-subtle rounded-md">
+          <p>More is coming soon!</p>
+          <p className="flex gap-1">
+            <p className="text-tremor-brand-subtle">{'<Await>'}</p> is
+            <p className="text-tremor-brand-subtle">{'<Promised>'}</p> !
+          </p>
+          <Link href="/impressum">Impressum</Link>
+        </div>
       </body>
     </html>
   );
