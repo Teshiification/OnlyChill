@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const ImpressumPage = () => {
@@ -6,6 +7,16 @@ const ImpressumPage = () => {
       id="impressum"
       className="flex flex-col gap-8 text-justify m-20 h-full p-4 rounded-md border-2 border-tremor-brand overflow-y-auto"
     >
+      <p className="text-xs italic">
+        {`our project is open source and can be viewed under github `}
+        <a
+          title="external link to github.com"
+          className="text-tremor-brand"
+          href="https://www.github.com/Teshiification/Halle"
+        >
+          click here
+        </a>
+      </p>
       <h1 className="text-xl font-semibold">Impressum - OnlyChill</h1>
       <p className="italic">Angaben gemäß § 5 TMG</p>
       <p className="flex flex-col">
