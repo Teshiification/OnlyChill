@@ -16,16 +16,16 @@ const CustomerList: FC<TableListProps> = (props: TableListProps) => {
       <div className="flex flex-col gap-4">
         {props.items?.map((item: any, index: any) => {
           return (
-            <div className="flex flex-row justify-around dark:text-slate-50 text-slate-500 border-[1px] border-tremor-brand-subtle py-1 px-2">
+            <div className="border-tremor-brand-subtle flex flex-row justify-around border px-2 py-1 text-slate-500 dark:text-slate-50">
               <div className="flex w-full justify-around">
-                {item?.map((entry: any) => {
+                {item?.map((entry: any, index: number) => {
                   return <p>{entry}</p>;
                 })}
               </div>
               <button
                 onClick={() => deleteHandler(item)}
                 title="Delete item"
-                className="bg-orange-500 p-2 rounded-md"
+                className="rounded-md bg-orange-500 p-2"
               >
                 Delete
               </button>

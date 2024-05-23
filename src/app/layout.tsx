@@ -1,9 +1,8 @@
-import './globals.css';
+import '@/styles/globals.css';
 import Link from 'next/link';
-import LogoutButton from '@ui/LogoutButton';
-import NextJsLogo from '@ui/NextJsLogo';
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
 import { cookies } from 'next/headers';
+import LogoutButton from '@/components/ui/LogoutButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -23,10 +22,10 @@ export default async function RootLayout({
   } = await supabase.auth.getUser();
   return (
     <html lang="en">
-      <body className="h-screen w-screen overflow-hidden bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 flex flex-col items-center select-none">
-        <nav className="w-full flex justify-center border-b border-gray-800 h-16">
-          <div className="w-full flex justify-between items-center p-3 text-sm">
-            <Link href="/" className="font-semibold text-lg font-serif italic">
+      <body className="flex h-screen w-screen select-none flex-col items-center overflow-hidden bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+        <nav className="flex h-16 w-full justify-center border-b border-gray-800">
+          <div className="flex w-full items-center justify-between p-3 text-sm">
+            <Link href="/" className="font-serif text-lg font-semibold italic">
               OnlyChill
             </Link>
             {user ? (
@@ -37,15 +36,15 @@ export default async function RootLayout({
             ) : (
               <Link
                 href="/login"
-                className="py-2 px-4 rounded-md no-underline bg-tremor-brand hover:bg-tremor-brand-subtle"
+                className="bg-tremor-brand hover:bg-tremor-brand-subtle rounded-md px-4 py-2 no-underline"
               >
                 Login
               </Link>
             )}
           </div>
         </nav>
-        <main className="w-full h-full">{children}</main>
-        <div className="absolute bottom-4 font-semibold flex flex-row justify-around w-full border-2 border-tremor-brand-subtle rounded-md">
+        <main className="size-full">{children}</main>
+        <div className="border-tremor-brand-subtle absolute bottom-4 flex w-full flex-row justify-around rounded-md border-2 font-semibold">
           <p>More is coming soon!</p>
           <p className="flex gap-1">
             <p className="text-tremor-brand-subtle">{'<Await>'}</p> is

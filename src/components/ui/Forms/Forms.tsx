@@ -56,13 +56,13 @@ const Form = ({ session, children, submitData }: FormProps) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="self-center w-full md:w-1/2 gap-4 flex flex-col"
+      className="flex w-full flex-col gap-4 self-center md:w-1/2"
       aria-disabled={submitPending}
     >
       <div className="flex flex-wrap justify-around">{children}</div>
       <button
         type="submit"
-        className="hover:bg-green-400 bg-green-500 rounded-md px-2 py-1"
+        className="rounded-md bg-green-500 px-2 py-1 hover:bg-green-400"
       >
         Add
       </button>

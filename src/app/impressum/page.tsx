@@ -5,7 +5,7 @@ const ImpressumPage = () => {
   return (
     <div
       id="impressum"
-      className="flex flex-col gap-8 text-justify m-20 h-full p-4 rounded-md border-2 border-tremor-brand overflow-y-auto"
+      className="border-tremor-brand m-20 flex h-full flex-col gap-8 overflow-y-auto rounded-md border-2 p-4 text-justify"
     >
       <p className="text-xs italic">
         {`our project is open source and can be viewed under github `}

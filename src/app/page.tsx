@@ -12,33 +12,33 @@ export default async function Index() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="flex flex-col w-screen h-screen items-center select-none overflow-y-auto">
-      <div className="w-full h-full flex flex-col px-2">
+    <div className="flex h-screen w-screen select-none flex-col items-center overflow-y-auto">
+      <div className="flex size-full flex-col px-2">
         {user ? (
           <>
             <Statistics />
           </>
         ) : (
-          <div className="flex flex-col items-center gap-4 mt-8 w-full">
-            <h1 className="font-bold text-2xl">Hey Buddy!</h1>
+          <div className="mt-8 flex w-full flex-col items-center gap-4">
+            <h1 className="text-2xl font-bold">Hey Buddy!</h1>
 
-            <h2 className="text-xl text-justify p-4">
+            <h2 className="p-4 text-justify text-xl">
               Save your statistics and play with your friends online via
               OnlyChill.
             </h2>
 
             <div>
-              <h2 className="text-xl italic font-serif">Current Features</h2>
-              <table className="border-2 border-tremor-brand-subtle rounded-md p-2">
-                <tr className="border-b-2 border-tremor-brand-subtle">
+              <h2 className="font-serif text-xl italic">Current Features</h2>
+              <table className="border-tremor-brand-subtle rounded-md border-2 p-2">
+                <tr className="border-tremor-brand-subtle border-b-2">
                   <th>Type</th>
-                  <th className="border-l-2 border-tremor-brand-subtle">
+                  <th className="border-tremor-brand-subtle border-l-2">
                     Name
                   </th>
                 </tr>
                 <tr>
                   <td className="px-2">Statistics</td>
-                  <td className="px-2 border-l-2 border-tremor-brand-subtle">
+                  <td className="border-tremor-brand-subtle border-l-2 px-2">
                     Drinking Beer, Smoking Shisha
                   </td>
                 </tr>

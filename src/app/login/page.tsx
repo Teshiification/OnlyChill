@@ -3,10 +3,10 @@ import Messages from './messages';
 
 export default function Login() {
   return (
-    <div className="relative w-full h-full flex-1 flex flex-col px-8 justify-center content-center items-center gap-2">
+    <div className="relative flex size-full flex-1 flex-col content-center items-center justify-center gap-2 px-8">
       <Link
         href="/"
-        className="py-2 px-4 rounded-md no-underline text-foreground flex items-center group text-sm"
+        className="text-foreground group flex items-center rounded-md px-4 py-2 text-sm no-underline"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +18,7 @@ export default function Login() {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
+          className="mr-2 size-4 transition-transform group-hover:-translate-x-1"
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>{' '}
@@ -26,7 +26,7 @@ export default function Login() {
       </Link>
 
       <form
-        className="flex-1 flex flex-col w-full md:w-1/3 justify-center gap-2 text-gray-100"
+        className="flex w-full flex-1 flex-col justify-center gap-2 text-gray-100 md:w-1/3"
         action="/auth/sign-in"
         method="post"
       >
@@ -34,7 +34,7 @@ export default function Login() {
           Email
         </label>
         <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          className="mb-6 rounded-md border bg-inherit px-4 py-2"
           name="email"
           placeholder="you@example.com"
           required
@@ -43,18 +43,18 @@ export default function Login() {
           Password
         </label>
         <input
-          className="rounded-md px-4 py-2 bg-inherit border mb-6"
+          className="mb-6 rounded-md border bg-inherit px-4 py-2"
           type="password"
           name="password"
           placeholder="••••••••"
           required
         />
-        <button className="bg-tremor-brand rounded px-4 py-2 mb-2">
+        <button className="bg-tremor-brand mb-2 rounded px-4 py-2">
           Sign In
         </button>
         <button
           formAction="/auth/sign-up"
-          className="border border-gray-500 rounded px-4 py-2 mb-2"
+          className="mb-2 rounded border border-gray-500 px-4 py-2"
         >
           Sign Up
         </button>

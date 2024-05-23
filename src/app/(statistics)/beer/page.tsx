@@ -26,16 +26,16 @@ const BeerPage = async () => {
   } = await supabase.auth.getSession();
 
   return (
-    <div className="flex flex-col gap-2 w-screen h-screen items-center select-none overflow-y-auto">
+    <div className="flex h-screen w-screen select-none flex-col items-center gap-2 overflow-y-auto">
       <p>Beer</p>
       {
         //<Form />
         session && <BeerForm session={session as Session} />
       }
-      <div className="w-full h-full flex flex-col px-2">
-        <h2 className="text-xl font-semibold font-serif mx-auto">Log</h2>
-        <div className="flex justify-between border-b-2 border-tremor-brand-subtle">
-          <p className="border-l-2 border-tremor-brand-subtle pl-2 w-full">
+      <div className="flex size-full flex-col px-2">
+        <h2 className="mx-auto font-serif text-xl font-semibold">Log</h2>
+        <div className="border-tremor-brand-subtle flex justify-between border-b-2">
+          <p className="border-tremor-brand-subtle w-full border-l-2 pl-2">
             Date
           </p>
         </div>
@@ -44,7 +44,7 @@ const BeerPage = async () => {
           return (
             <div className="flex justify-between">
               <p className="w-1/2 overflow-hidden">{data.product_name}</p>
-              <p className="border-l-2 border-tremor-brand-subtle pl-2 w-full italic">
+              <p className="border-tremor-brand-subtle w-full border-l-2 pl-2 italic">
                 {`${date.toLocaleDateString()}\t${date.toLocaleTimeString()}`}
               </p>
             </div>

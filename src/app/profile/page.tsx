@@ -7,8 +7,8 @@ export default async function Index() {
 
   if (!user) redirect('login');
   return (
-    <div className="flex flex-col w-screen h-screen items-center select-none overflow-y-auto">
-      <div className="w-full h-full flex flex-col px-2">
+    <div className="flex h-screen w-screen select-none flex-col items-center overflow-y-auto">
+      <div className="flex size-full flex-col px-2">
         <div>Entdecken Sie neue Reiseziele.</div>
       </div>
     </div>
