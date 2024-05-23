@@ -12,7 +12,7 @@ export default async function Index() {
   } = await supabase.auth.getUser();
 
   return (
-    <div className="flex h-screen w-screen select-none flex-col items-center overflow-y-auto">
+    <div className="flex size-full select-none flex-col items-center overflow-y-auto">
       <div className="flex size-full flex-col px-2">
         {user ? (
           <>
@@ -29,16 +29,14 @@ export default async function Index() {
 
             <div>
               <h2 className="font-serif text-xl italic">Current Features</h2>
-              <table className="border-tremor-brand-subtle rounded-md border-2 p-2">
-                <tr className="border-tremor-brand-subtle border-b-2">
+              <table className="border-border rounded-md border-2 p-2">
+                <tr className="border-border border-b-2">
                   <th>Type</th>
-                  <th className="border-tremor-brand-subtle border-l-2">
-                    Name
-                  </th>
+                  <th className="border-border border-l-2">Name</th>
                 </tr>
                 <tr>
                   <td className="px-2">Statistics</td>
-                  <td className="border-tremor-brand-subtle border-l-2 px-2">
+                  <td className="border-border border-l-2 px-2">
                     Drinking Beer, Smoking Shisha
                   </td>
                 </tr>

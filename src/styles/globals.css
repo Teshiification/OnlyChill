@@ -7,7 +7,7 @@
     --background: 74 32 80%;
     --foreground: 52% 94% 94%;
     --card: 52 94% 94%;
-    --card-foreground: 52% 94% 94%;
+    --card-foreground: 74 32 32%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 52% 94% 94%;
     --primary: 74 32 32%;
@@ -23,6 +23,7 @@
     --border: 52% 94% 25%;
     --input: 52% 94% 25%;
     --ring: 20.5 90.2% 48.2%;
+    --radius: 0.5rem;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -30,7 +31,7 @@
     --background: 74 32 8%;
     --foreground: 52% 94% 94%;
     --card: 52 94% 94%;
-    --card-foreground: 52% 94% 94%;
+    --card-foreground: 74 32 32%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 52% 94% 94%;
     --primary: 74 32 32%;

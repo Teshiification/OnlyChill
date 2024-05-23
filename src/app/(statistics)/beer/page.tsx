@@ -34,17 +34,15 @@ const BeerPage = async () => {
       }
       <div className="flex size-full flex-col px-2">
         <h2 className="mx-auto font-serif text-xl font-semibold">Log</h2>
-        <div className="border-tremor-brand-subtle flex justify-between border-b-2">
-          <p className="border-tremor-brand-subtle w-full border-l-2 pl-2">
-            Date
-          </p>
+        <div className="border-border flex justify-between border-b-2">
+          <p className="border-border w-full border-l-2 pl-2">Date</p>
         </div>
         {beerdata?.map((data) => {
           const date = new Date(data.created_at);
           return (
             <div className="flex justify-between">
               <p className="w-1/2 overflow-hidden">{data.product_name}</p>
-              <p className="border-tremor-brand-subtle w-full border-l-2 pl-2 italic">
+              <p className="border-border w-full border-l-2 pl-2 italic">
                 {`${date.toLocaleDateString()}\t${date.toLocaleTimeString()}`}
               </p>
             </div>
