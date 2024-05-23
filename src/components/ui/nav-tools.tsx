@@ -1,60 +1,51 @@
-'use client'
+'use client';
 
 import {
   GithubIcon,
   GripVerticalIcon,
   HomeIcon,
   LinkedinIcon
-} from 'lucide-react'
-import Link from 'next/link'
-import { useState } from 'react'
+} from 'lucide-react';
+import Link from 'next/link';
 
-import { cn } from '@/lib/utils'
-
-import { Button } from './button'
-import { ThemeToggle } from './theme-toggle'
+import { Button } from './button';
+import { ThemeToggle } from './theme-toggle';
+import { Popover, PopoverContent, PopoverTrigger } from './popover';
 
 export const NavTools = () => {
-  const [expand, setExpand] = useState<boolean>(false)
-
   return (
-    <div
-      className={cn(
-        'absolute right-4 top-4 z-50 flex flex-col overflow-hidden rounded-lg transition-all duration-300 ease-in-out',
-        expand ? 'bg-background' : 'bg-transparent'
-      )}
+    <Popover
+      className={
+        'flex flex-col overflow-hidden rounded-lg transition-all duration-300 ease-in-out'
+      }
     >
-      <Button
-        variant={'default'}
-        onClick={() => {
-          setExpand(!expand)
-        }}
+      <PopoverContent
+        className={
+          'flex flex-col w-fit items-center space-y-1 transition-all duration-300 ease-in-out'
+        }
       >
-        <GripVerticalIcon className='size-4' />
-      </Button>
-      <div
-        className={cn(
-          'flex flex-col items-center space-y-1 transition-all duration-300 ease-in-out',
-          expand ? 'visible size-full' : 'hidden size-4'
-        )}
-      >
-        <Link href='/'>
+        <Link href="/">
           <Button variant={'ghost'}>
-            <HomeIcon className='size-4' />
+            <HomeIcon className="size-4" />
           </Button>
         </Link>
         <ThemeToggle />
-        <Link href='https://www.github.com/Teshiification'>
+        <Link href="https://www.github.com/Teshiification">
           <Button variant={'ghost'}>
-            <GithubIcon className='size-4' />
+            <GithubIcon className="size-4" />
           </Button>
         </Link>
-        <Link href='https://www.linkedin.com/in/danny-sinicco/'>
+        <Link href="https://www.linkedin.com/in/danny-sinicco/">
           <Button variant={'ghost'}>
-            <LinkedinIcon className='size-4' />
+            <LinkedinIcon className="size-4" />
           </Button>
         </Link>
-      </div>
-    </div>
-  )
-}
+      </PopoverContent>
+      <PopoverTrigger className="fixed right-8 bottom-8 z-50">
+        <Button variant={'default'}>
+          <GripVerticalIcon className="size-4" />
+        </Button>
+      </PopoverTrigger>
+    </Popover>
+  );
+};
