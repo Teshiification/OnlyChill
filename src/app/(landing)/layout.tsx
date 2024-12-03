@@ -14,15 +14,15 @@ export default async function LandingLayout({
   } = await supabase.auth.getUser();
 
   return (
-    <body className="size-full">
-      <nav className="flex h-16 w-full justify-center border-b border-gray-800">
+    <div className="size-full">
+      <nav className="flex h-16 w-full justify-center border-b">
         <div className="flex w-full items-center justify-between p-3 text-sm">
           <Link href="/" className="font-serif text-lg font-semibold italic">
             OnlyChill
           </Link>
           {user ? (
             <div className="flex items-center gap-4">
-              Hey, {user?.email}!
+              Hey, {user?.email?.split('@')[0]}!
               <LogoutButton />
             </div>
           ) : (
@@ -39,6 +39,6 @@ export default async function LandingLayout({
       <div className="absolute bottom-4 flex w-full flex-row justify-around rounded-md font-semibold">
         <Link href="/impressum">Impressum</Link>
       </div>
-    </body>
+    </div>
   );
 }

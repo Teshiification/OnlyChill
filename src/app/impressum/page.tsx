@@ -10,7 +10,7 @@ import React from 'react';
 
 const ImpressumPage = () => {
   return (
-    <div className="flex p-20">
+    <div className="flex p-4 md:p-20">
       <Card
         id="impressum"
         className="flex size-full flex-col gap-8 overflow-y-auto p-4 text-justify"
@@ -97,11 +97,11 @@ const ImpressumPage = () => {
             </p>
           </div>
         </CardContent>
-        <CardFooter className="flex flex-row justify-around text-xs italic items-center">
+        <CardFooter className="flex gap-4 flex-col md:flex-row justify-around text-xs italic items-center">
           <p>our project is open source and can be viewed under github:</p>
           <Link
             title="external link to github.com"
-            className="text-primary/80 border-border rounded-full border p-2 hover:shadow-md hover:shadow-primary/80"
+            className="text-primary/80  rounded-full border p-2 hover:shadow-md hover:shadow-primary/80"
             href="https://www.github.com/Teshiification/Halle"
           >
             <GithubIcon className="size-8" />

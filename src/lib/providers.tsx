@@ -1,18 +1,52 @@
 'use client';
 
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { createContext } from 'react';
-import { cookies } from 'next/headers';
-import { User } from 'next-auth';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode
+} from 'react';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { User } from '@supabase/supabase-js';
 
-export const UserContext = createContext<User | null>(null);
+interface UserContextProps {
+  user: User | null;
+  setUser: (user: User | null) => void;
+}
 
-export async function UserProvider({ children }: any) {
-  const supabase = createServerComponentClient({ cookies });
-  const {
-    data: { user }
-  } = await supabase.auth.getUser();
+export const UserContext = createContext<UserContextProps | undefined>(
+  undefined
+);
+
+export function UserProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(null);
+  const supabase = createClientComponentClient();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { data, error } = await supabase.auth.getUser();
+      if (error) {
+        console.error('Error fetching user:', error);
+      } else {
+        setUser(data.user);
+      }
+    };
+
+    fetchUser();
+  }, [supabase]);
+
   return (
-    <UserContext.Provider value={user as User}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, setUser }}>
+      {children}
+    </UserContext.Provider>
   );
 }
+
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error('useUser must be used within a UserProvider');
+  }
+  return context;
+};

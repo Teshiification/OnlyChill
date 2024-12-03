@@ -1,7 +1,23 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from 'tailwindcss'
 
-const { fontFamily } = require('tailwindcss/defaultTheme');
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
+const {
+  default: flattenColorPalette
+} = require('tailwindcss/lib/util/flattenColorPalette')
+
+function addVariablesForColors({ addBase, theme }: any) {
+  const allColors = flattenColorPalette(theme('colors'))
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  )
+
+  addBase({
+    ':root': newVars
+  })
+}
+
+/** @type {import('tailwindcss').Config} */
 const config = {
   darkMode: ['class'],
   content: [
@@ -20,6 +36,9 @@ const config = {
       }
     },
     extend: {
+      fontFamily: {
+        sans: ['var(--font-sans)', ...fontFamily.sans]
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -53,7 +72,8 @@ const config = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
-        }
+        },
+        wood: 'hsl(var(--wood))'
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -73,16 +93,11 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
-      },
-      fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans]
       }
     }
   },
-  plugins: [
-    require('tailwindcss-animate'),
-    require('@codaworks/react-glow/tailwind')
-  ]
-} satisfies Config;
+  // eslint-disable-next-line global-require
+  plugins: [require('tailwindcss-animate'), addVariablesForColors]
+} satisfies Config
 
-export default config;
+export default config

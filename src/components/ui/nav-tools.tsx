@@ -21,7 +21,7 @@ export const NavTools = () => {
     >
       <PopoverContent
         className={
-          'flex flex-col w-fit items-center space-y-1 transition-all duration-300 ease-in-out'
+          'flex w-fit flex-col items-center space-y-1 transition-all duration-300 ease-in-out'
         }
       >
         <Link href="/">
@@ -41,7 +41,7 @@ export const NavTools = () => {
           </Button>
         </Link>
       </PopoverContent>
-      <PopoverTrigger className="fixed right-8 bottom-8 z-50">
+      <PopoverTrigger className="fixed bottom-8 right-8 z-50">
         <Button variant={'default'}>
           <GripVerticalIcon className="size-4" />
         </Button>

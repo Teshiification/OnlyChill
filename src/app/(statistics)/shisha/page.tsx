@@ -1,58 +1,73 @@
-import TabakForm from '@/components/ui/Forms/Tabak/Form';
-import { Session } from '@supabase/auth-helpers-nextjs';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+'use client';
+import { useEffect, useState } from 'react';
+import { columns } from '@/components/ui/Forms/Tabak/columns';
+import { DataTable } from '@/components/ui/Forms/Tabak/data-table';
+import { taskSchema } from '@/components/ui/Forms/Tabak/data/schema';
+import { z } from 'zod';
+// import { getUser } from '@/lib/middleware';
+import { PostgrestResponse, User } from '@supabase/supabase-js';
 
-export const dynamic = 'force-dynamic';
+async function getTasks({ req }) {
+  // const { user, error } = await getUser(req);
 
-const ShishaPage = async () => {
-  const supabase = createServerComponentClient({ cookies });
-
+  if (error || !user) {
+    // Redirect to login page if not authenticated
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    };
+  }
   const {
-    data: { user }
-  } = await supabase.auth.getUser();
-
-  const { data: shishadata } = await supabase
+    data,
+    error
+  }: PostgrestResponse<{
+    user_id: string;
+    created_at: Date;
+    activity_type: string;
+    product_name: string;
+    organization_id: string;
+  }> = await supabaseClient
     .from('activity_statistics')
     .select('*')
-    .eq('user_id', user?.id)
+    // .eq('user_id', user!.id)
     .eq('activity_type', 'smoking shisha');
 
-  if (!user) redirect('login');
+  if (error) {
+    console.error(error);
+    return [];
+  }
 
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
+  return z.array(taskSchema).parse(data);
+}
+
+export default function TaskPage() {
+  const [tasks, setTasks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTasks() {
+      const user: User | undefined = await getUser();
+      if (!user) {
+        setLoading(false);
+        return;
+      }
+      const tasks = await getTasks();
+      setTasks(tasks);
+      setLoading(false);
+    }
+
+    fetchTasks();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div className="flex h-screen w-screen select-none flex-col items-center gap-2 overflow-y-auto">
-      <p>Shisha Tabak</p>
-      {
-        //<Form />
-        session && <TabakForm session={session as Session} />
-      }
-      <div className="flex size-full flex-col px-2">
-        <h2 className="mx-auto font-serif text-xl font-semibold">Log</h2>
-        <div className="border-tremor-brand-subtle flex justify-between border-b-2">
-          <p className="w-1/2">Name</p>
-          <p className="border-tremor-brand-subtle w-full border-l-2 pl-2">
-            Date
-          </p>
-        </div>
-        {shishadata?.map((data) => {
-          const date = new Date(data.created_at);
-          return (
-            <div className="flex justify-between">
-              <p className="w-1/2 overflow-hidden">{data.product_name}</p>
-              <p className="border-tremor-brand-subtle w-full border-l-2 pl-2 italic">
-                {`${date.toLocaleDateString()}\t${date.toLocaleTimeString()}`}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      <DataTable data={tasks} columns={columns} />
+    </>
   );
-};
-export default ShishaPage;
+}

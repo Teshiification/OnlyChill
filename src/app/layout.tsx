@@ -1,5 +1,5 @@
+// layout.tsx
 import '@/styles/globals.css';
-
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
@@ -7,6 +7,9 @@ import React from 'react';
 
 import { NavTools } from '@/components/ui/nav-tools';
 import { cn } from '@/lib/utils';
+import '@radix-ui/themes/styles.css';
+import { Theme } from '@radix-ui/themes';
+import { UserProvider } from '@/lib/providers';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -32,17 +35,21 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NavTools />
-          <div className="bg-background relative flex min-h-screen select-none flex-col">
-            {children}
-          </div>
-        </ThemeProvider>
+        <UserProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Theme>
+              <NavTools />
+              <div className="bg-background relative flex min-h-full select-none flex-col">
+                {children}
+              </div>
+            </Theme>
+          </ThemeProvider>
+        </UserProvider>
       </body>
     </html>
   );
